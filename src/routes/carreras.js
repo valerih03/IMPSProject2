@@ -41,6 +41,7 @@ router.get('/editar/:idcarrera', async (request, response) => {
     const { idcarrera } = request.params;
     try {
         const carrera = await queries.obtenerCarreraPorId(idcarrera);
+        console.log('Datos de la carrera:', carrera); // Verifica los datos aquí
         response.render('carreras/editar', { carrera });
     } catch (error) {
         console.error('Error al obtener la carrera:', error);
@@ -72,8 +73,10 @@ router.post('/editar/:idcarrera', async (request, response) => {
 router.get('/eliminar/:idcarrera', async (request, response) => {
     const { idcarrera } = request.params;
     try {
+        console.log(`Recibido idcarrera para eliminar: ${idcarrera}`);
         const resultado = await queries.eliminarCarrera(idcarrera);
-        if (resultado > 0) {
+        console.log(`Resultado de eliminación para id: ${idcarrera}`, resultado);
+        if (resultado) {
             request.flash('success', 'Eliminación correcta');
         } else {
             request.flash('error', 'Error al eliminar');
@@ -85,5 +88,4 @@ router.get('/eliminar/:idcarrera', async (request, response) => {
         response.redirect('/carreras');
     }
 });
-
 module.exports = router;

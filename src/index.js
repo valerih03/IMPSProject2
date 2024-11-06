@@ -53,8 +53,8 @@ app.use((request, response, next) => {
 app.use(require('./routes')); // Node automáticamente busca el index.js del módulo
 app.use('/estudiantes', require('./routes/estudiantes')); // Configuración de ruta para estudiantes
 app.use('/carreras', require('./routes/carreras')); // Configuración de ruta para carreras
-//app.use('/materias', require('./routes/materias')); // Configuración de ruta para materias
-//app.use('/profesores', require('./routes/profesores')); // Configuración de ruta para profesores
+app.use('/materias', require('./routes/materias')); // Configuración de ruta para materias
+app.use('/profesores', require('./routes/profesores')); // Configuración de ruta para profesores
 //app.use('/grupos', require('./routes/grupos')); // Configuración de ruta para grupos
 
 // Archivos públicos (acá se coloca todo el código al cual el navegador puede acceder)
